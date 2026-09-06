@@ -1,0 +1,13 @@
+{
+  "year": 1000,
+  "title": "Leif Erikson reaches Vinland",
+  "lon": -52.76,
+  "lat": 51.58,
+  "regionId": "vinland",
+  "religion": "Norse paganism",
+  "territory": "Norsemen",
+  "language": "Old Norse",
+  "ethnicity": "Norse",
+  "desc": "Leif Erikson leads a Norse expedition to the coast of North America, reaching a land he calls Vinland.",
+  "id": "1000-leif-erikson-reaches-vinland"
+}

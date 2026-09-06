@@ -1,61 +1,70 @@
-# Contribuer à Autour de l’An Mil
+**# Contributing to Around the Year 1000**
 
-Le projet sépare le **code** et les **données historiques**.
+The project separates **code** from **historical data**.
 
-## Pour ajouter un événement
+**## Adding an event**
 
-La méthode recommandée pour un professeur ou historien est :
+The recommended method for a teacher or historian is:
 
-1. Ouvrir l'onglet **Issues** du dépôt GitHub.
-2. Choisir **Ajouter un événement historique**.
-3. Remplir le formulaire.
-4. Un mainteneur transforme la proposition en fichier `data/events/AAAA-slug.json`.
-5. La Pull Request est automatiquement contrôlée par GitHub Actions.
+1. Open the **Issues** tab of the GitHub repository.
 
-Vous n'avez donc pas besoin de modifier `src/`.
+2. Select **Add a historical event**.
 
-## Pour les contributeurs qui travaillent directement sur Git
+3. Fill out the form.
 
-Chaque événement possède son propre fichier :
+4. A maintainer converts the proposal into a `data/events/YYYY-slug.json` file.
+
+5. The Pull Request is automatically checked by GitHub Actions.
+
+You therefore do not need to modify `src/`.
+
+**## For contributors working directly with Git**
+
+Each event has its own file:
 
 ```text
 data/events/
+
 ├── 0793-lindisfarne.json
+
 ├── 0860-constantinople.json
+
 ├── 0882-kiev.json
+
 └── ...
 ```
 
-Une contribution historique modifie idéalement un seul fichier. Cela réduit les conflits Git entre contributeurs.
+A historical contribution should ideally modify a single file. This reduces Git merge conflicts between contributors.
 
-Après ajout ou modification d'un événement :
+After adding or modifying an event:
 
 ```bash
 python scripts/validate_data.py
 ```
 
-Puis test local :
+Then test locally:
 
 ```bash
 python -m http.server 8000
 ```
 
-et ouvrir `http://localhost:8000/`.
+and open `http://localhost:8000/`.
 
-## Ne pas modifier
+**## Do not modify**
 
-Sauf si vous développez la carte, évitez de modifier :
+Unless you are developing the map itself, avoid modifying:
 
 ```text
 src/
+
 index.html
 ```
 
-## Avant une Pull Request
+**## Before submitting a Pull Request**
 
-- vérifier l'année ;
-- vérifier latitude/longitude ;
-- vérifier `regionId` ;
-- fournir des sources ;
-- lancer la validation ;
-- tester l'affichage.
+* verify the year;
+* verify the latitude/longitude;
+* verify `regionId`;
+* provide sources;
+* run the validation;
+* test the display.

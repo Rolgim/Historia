@@ -1,0 +1,13 @@
+{
+  "year": 1941,
+  "title": "Attack on Pearl Harbor",
+  "lon": -157.94,
+  "lat": 21.35,
+  "regionId": "empire-of-japan",
+  "religion": "Shinto",
+  "territory": "Empire of Japan",
+  "language": "Japanese",
+  "ethnicity": "Yamato",
+  "desc": "Japan's surprise attack on the US Pacific Fleet at Pearl Harbor brings the United States into the Second World War.",
+  "id": "1941-attack-on-pearl-harbor"
+}

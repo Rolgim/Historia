@@ -1,0 +1,13 @@
+{
+  "year": 1291,
+  "title": "Fall of Acre",
+  "lon": 35.08,
+  "lat": 32.93,
+  "regionId": "mamluke-sultanate",
+  "religion": "Sunni Islam",
+  "territory": "Mamluke Sultanate",
+  "language": "Arabic",
+  "ethnicity": "Arabs",
+  "desc": "The Mamluks capture Acre, ending the last major Crusader stronghold in the Levant.",
+  "id": "1291-fall-of-acre"
+}

@@ -1,0 +1,13 @@
+{
+  "year": 1037,
+  "title": "Seljuks take Persia",
+  "lon": 52.5,
+  "lat": 35.7,
+  "regionId": "seljuk-empire",
+  "religion": "Sunni Islam",
+  "territory": "Seljuk Empire",
+  "language": "Persian",
+  "ethnicity": "Turks",
+  "desc": "The Seljuk Turks under Tughril Beg conquer Khorasan and much of Persia, founding the Seljuk Empire.",
+  "id": "1037-seljuks-take-persia"
+}

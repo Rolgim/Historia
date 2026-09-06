@@ -1,0 +1,13 @@
+{
+  "year": 1453,
+  "title": "Fall of Constantinople",
+  "lon": 28.98,
+  "lat": 41.01,
+  "regionId": "byzantine-empire",
+  "religion": "Sunni Islam",
+  "territory": "Ottoman Empire",
+  "language": "Ottoman Turkish",
+  "ethnicity": "Turks",
+  "desc": "Sultan Mehmed II captures Constantinople, ending the Byzantine Empire.",
+  "id": "1453-fall-of-constantinople"
+}

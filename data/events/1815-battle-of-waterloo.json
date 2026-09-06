@@ -1,0 +1,13 @@
+{
+  "year": 1815,
+  "title": "Battle of Waterloo",
+  "lon": 4.4,
+  "lat": 50.68,
+  "regionId": "kingdom-of-france",
+  "religion": "Catholic Christianity",
+  "territory": "Kingdom of France",
+  "language": "French",
+  "ethnicity": "French",
+  "desc": "A coalition led by Britain and Prussia defeats Napoleon at Waterloo, ending his rule for good.",
+  "id": "1815-battle-of-waterloo"
+}

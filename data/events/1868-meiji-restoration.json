@@ -1,0 +1,13 @@
+{
+  "year": 1868,
+  "title": "Meiji Restoration",
+  "lon": 139.75,
+  "lat": 35.68,
+  "regionId": "empire-of-japan",
+  "religion": "Shinto",
+  "territory": "Empire of Japan",
+  "language": "Japanese",
+  "ethnicity": "Yamato",
+  "desc": "Imperial rule is restored in Japan, launching rapid modernization and industrialization under the Meiji government.",
+  "id": "1868-meiji-restoration"
+}

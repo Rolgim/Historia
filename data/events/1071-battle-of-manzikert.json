@@ -1,0 +1,13 @@
+{
+  "year": 1071,
+  "title": "Battle of Manzikert",
+  "lon": 42.6,
+  "lat": 38.75,
+  "regionId": "byzantine-empire",
+  "religion": "Orthodox Christianity",
+  "territory": "Byzantine Empire",
+  "language": "Greek",
+  "ethnicity": "Greeks",
+  "desc": "The Seljuk Turks defeat the Byzantine army, opening Anatolia to Turkish settlement.",
+  "id": "1071-battle-of-manzikert"
+}

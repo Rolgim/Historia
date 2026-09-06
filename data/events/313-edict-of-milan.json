@@ -1,0 +1,13 @@
+{
+  "year": 313,
+  "title": "Edict of Milan",
+  "lon": 9.19,
+  "lat": 45.46,
+  "regionId": "roman-empire",
+  "religion": "Roman religion",
+  "territory": "Roman Empire",
+  "language": "Latin",
+  "ethnicity": "Romans",
+  "desc": "Emperors Constantine and Licinius proclaim religious toleration for Christians throughout the Roman Empire.",
+  "id": "313-edict-of-milan"
+}

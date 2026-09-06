@@ -1,0 +1,13 @@
+{
+  "year": 1066,
+  "title": "Battle of Hastings",
+  "lon": 0.49,
+  "lat": 50.91,
+  "regionId": "england",
+  "religion": "Catholic Christianity",
+  "territory": "English territory",
+  "language": "Old English",
+  "ethnicity": "English",
+  "desc": "William of Normandy defeats King Harold II, beginning the Norman conquest of England.",
+  "id": "1066-battle-of-hastings"
+}

@@ -1,0 +1,13 @@
+{
+  "year": 800,
+  "title": "Coronation of Charlemagne",
+  "lon": 12.5,
+  "lat": 41.9,
+  "regionId": "carolingian-empire",
+  "religion": "Catholic Christianity",
+  "territory": "Carolingian Empire",
+  "language": "Old Frankish",
+  "ethnicity": "Franks",
+  "desc": "Pope Leo III crowns Charlemagne Emperor of the Romans, reviving the idea of an empire in western Europe.",
+  "id": "800-coronation-of-charlemagne"
+}

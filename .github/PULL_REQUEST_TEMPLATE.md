@@ -1,11 +1,12 @@
-## Contribution historique
+**## Historical Contribution**
 
-- [ ] J'ai ajouté ou modifié uniquement les données nécessaires.
-- [ ] Les fichiers JSON sont valides.
-- [ ] L'événement est compris entre 700 et 1400.
-- [ ] `regionId` correspond à une région existante.
-- [ ] Les sources historiques sont indiquées.
-- [ ] J'ai testé la carte localement si possible.
+* [ ] I have added or modified only the necessary data.
+* [ ] The JSON files are valid.
+* [ ] The event falls between 700 and 1400.
+* [ ] `regionId` corresponds to an existing region.
+* [ ] Historical sources are provided.
+* [ ] I have tested the map locally, if possible.
 
-### Résumé
-<!-- Décrivez la contribution en quelques lignes. -->
+**### Summary**
+
+<!-- Describe the contribution in a few lines. -->

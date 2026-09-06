@@ -1,43 +1,53 @@
-# Workflow GitHub automatique
+**# Automated GitHub Workflow**
 
-Le projet peut transformer automatiquement une proposition d'événement en Pull Request.
+The project can automatically turn an event proposal into a Pull Request.
 
-## Parcours enseignant
+**## Contributor Workflow**
 
-1. Dans GitHub, ouvrir **Issues**.
-2. Cliquer sur **Ajouter un événement historique**.
-3. Remplir le formulaire.
-4. Cliquer sur **Submit new issue**.
-5. GitHub Actions lit les champs du formulaire.
-6. Un fichier est créé dans `data/events/`.
-7. La validation JSON est exécutée.
-8. Une Pull Request est créée automatiquement.
-9. Un mainteneur vérifie les sources et le contenu historique.
-10. Après validation, la Pull Request peut être fusionnée.
+1. In GitHub, open **Issues**.
 
-Le professeur n'a donc pas besoin de Git, de JSON, de HTML ou de JavaScript.
+2. Click **Add a historical event**.
 
-## Sécurité et contrôle éditorial
+3. Fill out the form.
 
-L'action ne fusionne jamais automatiquement la contribution.
+4. Click **Submit new issue**.
 
-Elle crée seulement une Pull Request. Un humain conserve la décision éditoriale.
+5. GitHub Actions reads the fields from the form.
 
-Le script :
-- limite les années à 700–1400 ;
-- vérifie les coordonnées ;
-- construit un nom de fichier à partir de l'année et du titre ;
-- refuse d'écraser un événement existant ;
-- passe ensuite par `scripts/validate_data.py`.
+6. A file is created in `data/events/`.
 
-## Activation
+7. JSON validation is run.
 
-Le workflow utilise `GITHUB_TOKEN`. Dans les réglages du dépôt, vérifier que les Actions ont le droit de créer et modifier du contenu et des Pull Requests.
+8. A Pull Request is created automatically.
 
-Le dépôt doit aussi conserver les labels `contribution` et `événement` utilisés par le formulaire et le workflow.
+9. A maintainer reviews the sources and historical content.
 
-## Si le dépôt est public
+10. Once approved, the Pull Request can be merged.
 
-Le formulaire peut être rempli par des utilisateurs externes. La proposition reste une **Issue**, puis l'automatisation crée une branche et une Pull Request dans le dépôt.
+The contributor therefore does not need Git, JSON, HTML, or JavaScript.
 
-La fusion reste réservée aux mainteneurs.
+**## Security and Editorial Control**
+
+The workflow never merges a contribution automatically.
+
+It only creates a Pull Request. A human retains editorial control over the final decision.
+
+The script:
+
+* limits the year to 700–1400;
+* validates the coordinates;
+* generates a filename from the year and title;
+* refuses to overwrite an existing event;
+* then runs `scripts/validate_data.py`.
+
+**## Activation**
+
+The workflow uses `GITHUB_TOKEN`. In the repository settings, make sure that Actions are allowed to create and modify repository contents and Pull Requests.
+
+The repository must also retain the `contribution` and `event` labels used by the form and the workflow.
+
+**## If the Repository Is Public**
+
+The form can be submitted by external users. The proposal initially remains an **Issue**, after which the automation creates a branch and a Pull Request in the repository.
+
+Merging remains restricted to maintainers.

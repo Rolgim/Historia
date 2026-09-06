@@ -62,6 +62,79 @@ let eventsLayer = null;
 
 
 // ============================================================
+// ÉTAT VISUEL D'UN ÉVÉNEMENT (visibilité + fondu dans le temps)
+// ============================================================
+//
+// Fonction unique utilisée PARTOUT où un marqueur d'événement est
+// stylé (rendu initial, défilement du curseur temporel, sélection
+// au clic) pour éviter que ces trois endroits se contredisent —
+// c'est cette incohérence qui faisait apparaître des événements
+// avant leur date ou changeait tous les points au clic.
+// ============================================================
+
+const EVENT_PEAK_YEARS = 30;
+const EVENT_FADE_YEARS = 200;
+const EVENT_MIN_FILL_OPACITY = 0.05;
+const EVENT_MIN_STROKE_OPACITY = 0.2;
+const EVENT_PEAK_RADIUS = 8;
+const EVENT_BASE_RADIUS = 5;
+const EVENT_MIN_RADIUS = 3;
+
+function lerp(a, b, t) {
+  return a + (b - a) * t;
+}
+
+function computeEventVisualState(eventYear, currentYear) {
+
+  const age =
+    Number(currentYear) - Number(eventYear);
+
+  if (age < 0) {
+
+    // Événement pas encore survenu : toujours invisible, quoi qu'il
+    // arrive ailleurs (sélection, changement de thème, etc.).
+    return {
+      visible: false,
+      fillOpacity: 0,
+      strokeOpacity: 0,
+      weight: 0,
+      radius: 0
+    };
+  }
+
+  const fadeT =
+    Math.max(
+      0,
+      Math.min(
+        1,
+        (age - EVENT_PEAK_YEARS) / EVENT_FADE_YEARS
+      )
+    );
+
+  return {
+    visible: true,
+    fillOpacity: lerp(0.3, EVENT_MIN_FILL_OPACITY, fadeT),
+    strokeOpacity: lerp(1, EVENT_MIN_STROKE_OPACITY, fadeT),
+    weight: 1,
+    radius:
+      age <= EVENT_PEAK_YEARS
+        ? EVENT_PEAK_RADIUS
+        : lerp(EVENT_BASE_RADIUS, EVENT_MIN_RADIUS, fadeT)
+  };
+}
+
+function getCurrentSliderYear() {
+
+  const slider =
+    document.getElementById("year-slider");
+
+  return slider
+    ? parseInt(slider.value, 10)
+    : 1000;
+}
+
+
+// ============================================================
 // HISTORICAL BASEMAP
 // ============================================================
 
@@ -137,26 +210,59 @@ async function main() {
             return;
           }
 
+          const currentYear =
+            getCurrentSliderYear();
+
           eventsLayer.eachLayer((layer) => {
 
-            const isSelected =
-              layer.options.eventIndex === eventIdx;
+            const eventIndex =
+              layer.options.eventIndex;
 
+            const event =
+              events[eventIndex];
+
+            if (!event) {
+              return;
+            }
+
+            const state =
+              computeEventVisualState(
+                event.year,
+                currentYear
+              );
+
+            // Un événement futur reste invisible, même sélectionné :
+            // la sélection ne doit jamais faire apparaître un point
+            // hors de sa plage temporelle.
+            if (!state.visible) {
+
+              layer.setStyle({
+                fillOpacity: 0,
+                opacity: 0,
+                weight: 0
+              });
+
+              layer.setRadius(0);
+              return;
+            }
+
+            const isSelected =
+              eventIndex === eventIdx;
+
+            // La sélection ajoute un surlignage PAR-DESSUS l'état
+            // naturel (visibilité/fondu) du point, au lieu de le
+            // remplacer — les autres points visibles ne bougent pas.
             layer.setStyle({
 
-              radius:
-                eventIdx === null
-                  ? 5
-                  : isSelected
-                    ? 8
-                    : 5,
-
               fillOpacity:
-                eventIdx === null
-                  ? 0.3
-                  : isSelected
-                    ? 1
-                    : 0.8,
+                isSelected
+                  ? 1
+                  : state.fillOpacity,
+
+              opacity:
+                isSelected
+                  ? 1
+                  : state.strokeOpacity,
 
               color:
                 isSelected
@@ -166,8 +272,15 @@ async function main() {
               weight:
                 isSelected
                   ? 3
-                  : 1
+                  : state.weight
+
             });
+
+            layer.setRadius(
+              isSelected
+                ? state.radius + 3
+                : state.radius
+            );
 
           });
         },
@@ -492,11 +605,18 @@ async function initGeoJSONLayers(
           latlng
         ) => {
 
+          const initialState =
+            computeEventVisualState(
+              feature.properties.year,
+              getCurrentSliderYear()
+            );
+
           return L.circleMarker(
             latlng,
             {
 
-              radius: 5,
+              radius:
+                initialState.radius,
 
               fillColor:
                 Theme.colorFor(
@@ -509,9 +629,14 @@ async function initGeoJSONLayers(
               color:
                 "#3a2c1a",
 
-              weight: 1,
+              weight:
+                initialState.weight,
 
-              fillOpacity: 0.3,
+              fillOpacity:
+                initialState.fillOpacity,
+
+              opacity:
+                initialState.strokeOpacity,
 
               eventIndex:
                 feature.properties.eventIndex
@@ -1192,53 +1317,22 @@ async function updateMapForYear(
         }
 
 
-        const visible =
-          Number(event.year) <=
-          Number(year);
-
+        const state =
+          computeEventVisualState(
+            event.year,
+            year
+          );
 
         layer.setStyle({
-
-          fillOpacity:
-            visible
-              ? 0.3
-              : 0,
-
-          opacity:
-            visible
-              ? 1
-              : 0,
-
-          weight:
-            visible
-              ? 1
-              : 0
-
+          fillOpacity: state.fillOpacity,
+          opacity: state.strokeOpacity,
+          weight: state.weight
         });
 
+        layer.setRadius(state.radius);
 
-        if (visible) {
-
-          if (
-            year - event.year <= 30
-          ) {
-
-            layer.setRadius(8);
-
-          }
-          else {
-
-            layer.setRadius(5);
-
-          }
-
-        }
-        else {
-
-          layer.setRadius(0);
-
+        if (!state.visible) {
           layer.closePopup();
-
         }
 
       }
@@ -1260,6 +1354,118 @@ async function updateMapForYear(
 // ============================================================
 // ÉVÉNEMENTS : COULEURS
 // ============================================================
+
+// ============================================================
+// COULEUR D'UN ÉVÉNEMENT = COULEUR DU PAYS SOUS LE POINT
+// ============================================================
+//
+// En mode "territoire", un point d'événement doit avoir EXACTEMENT
+// la même couleur que le polygone qui le contient à l'année
+// affichée — pas une couleur dérivée de son propre champ texte
+// "territory", qui ne correspond pas forcément mot pour mot au nom
+// du polygone (ex. "Kingdom of France" vs "France") et donnait donc
+// des couleurs sans rapport. On cherche ici le polygone réel qui
+// contient les coordonnées de l'événement.
+// ============================================================
+
+function pointInRing(pt, ring) {
+
+  let inside = false;
+
+  for (
+    let i = 0, j = ring.length - 1;
+    i < ring.length;
+    j = i++
+  ) {
+
+    const xi = ring[i][0], yi = ring[i][1];
+    const xj = ring[j][0], yj = ring[j][1];
+
+    const intersect =
+      (yi > pt[1]) !== (yj > pt[1]) &&
+      pt[0] < ((xj - xi) * (pt[1] - yi)) / (yj - yi) + xi;
+
+    if (intersect) {
+      inside = !inside;
+    }
+  }
+
+  return inside;
+}
+
+function pointInPolygonCoords(pt, coords) {
+
+  if (!coords || !coords.length) {
+    return false;
+  }
+
+  if (!pointInRing(pt, coords[0])) {
+    return false;
+  }
+
+  for (let i = 1; i < coords.length; i++) {
+    if (pointInRing(pt, coords[i])) {
+      return false; // à l'intérieur d'un trou
+    }
+  }
+
+  return true;
+}
+
+function pointInGeometry(pt, geometry) {
+
+  if (!geometry) {
+    return false;
+  }
+
+  if (geometry.type === "Polygon") {
+    return pointInPolygonCoords(pt, geometry.coordinates);
+  }
+
+  if (geometry.type === "MultiPolygon") {
+    return geometry.coordinates.some(
+      (poly) => pointInPolygonCoords(pt, poly)
+    );
+  }
+
+  return false;
+}
+
+function findPolygonSubjectAt(lon, lat) {
+
+  if (!regionsLayer) {
+    return null;
+  }
+
+  const pt = [Number(lon), Number(lat)];
+  let found = null;
+
+  regionsLayer.eachLayer((layer) => {
+
+    if (found) {
+      return;
+    }
+
+    const feature = layer.feature;
+
+    if (!feature) {
+      return;
+    }
+
+    if (pointInGeometry(pt, feature.geometry)) {
+
+      const props = feature.properties || {};
+
+      found =
+        cleanValue(props.SUBJECTO) ||
+        cleanValue(props.NAME) ||
+        null;
+    }
+  });
+
+  return found;
+}
+
 
 function updateEventStyles(
   events,
@@ -1286,18 +1492,25 @@ function updateEventStyles(
       }
 
 
-      const value =
-        event[Theme.current] ||
-        "#fff";
+      const isTerritory =
+        Theme.current === "territory";
+
+      const fillColor =
+        isTerritory
+          ? getDeterministicColor(
+              findPolygonSubjectAt(event.lon, event.lat) ||
+                event.territory ||
+                "Unknown"
+            )
+          : Theme.colorFor(
+              Theme.current,
+              event[Theme.current] || "#fff"
+            );
 
 
       layer.setStyle({
 
-        fillColor:
-          Theme.colorFor(
-            Theme.current,
-            value
-          )
+        fillColor
 
       });
 

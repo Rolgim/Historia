@@ -1,0 +1,13 @@
+{
+  "year": 1240,
+  "title": "Mongol sack of Kiev",
+  "lon": 30.5,
+  "lat": 50.45,
+  "regionId": "mongol-empire",
+  "religion": "Orthodox Christianity",
+  "territory": "Khanate of the Golden Horde",
+  "language": "Old East Slavic",
+  "ethnicity": "Rus'",
+  "desc": "The Mongols under Batu Khan destroy Kiev, ending its dominance over the Rus' principalities.",
+  "id": "1240-mongol-sack-of-kiev"
+}

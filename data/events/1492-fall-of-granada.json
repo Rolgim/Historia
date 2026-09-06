@@ -1,0 +1,13 @@
+{
+  "year": 1492,
+  "title": "Fall of Granada",
+  "lon": -3.6,
+  "lat": 37.17,
+  "regionId": "castile",
+  "religion": "Catholic Christianity",
+  "territory": "Castile",
+  "language": "Castilian Spanish",
+  "ethnicity": "Castilians",
+  "desc": "The Catholic Monarchs conquer Granada, ending Muslim rule in the Iberian Peninsula.",
+  "id": "1492-fall-of-granada"
+}

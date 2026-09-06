@@ -1,0 +1,13 @@
+{
+  "year": 1917,
+  "title": "Russian Revolution",
+  "lon": 30.31,
+  "lat": 59.94,
+  "regionId": "russian-empire",
+  "religion": "Orthodox Christianity",
+  "territory": "Russian Empire",
+  "language": "Russian",
+  "ethnicity": "Russians",
+  "desc": "The Bolsheviks seize power in Petrograd, overthrowing the provisional government and founding the Soviet state.",
+  "id": "1917-russian-revolution"
+}

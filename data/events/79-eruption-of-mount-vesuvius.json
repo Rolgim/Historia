@@ -1,0 +1,13 @@
+{
+  "year": 79,
+  "title": "Eruption of Mount Vesuvius",
+  "lon": 14.43,
+  "lat": 40.82,
+  "regionId": "roman-empire",
+  "religion": "Roman religion",
+  "territory": "Roman Empire",
+  "language": "Latin",
+  "ethnicity": "Romans",
+  "desc": "Mount Vesuvius erupts, burying the Roman cities of Pompeii and Herculaneum in volcanic ash.",
+  "id": "79-eruption-of-mount-vesuvius"
+}

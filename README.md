@@ -1,85 +1,85 @@
-# Histoires
+**# Histories**
 
-Carte historique interactive du monde.
+Interactive historical map of the world.
 
-## Architecture
+**## Architecture**
 
 ```text
 index.html
-src/                    # code de l'application
+src/                    # application code
 data/
-  regions.json          # régions historiques
-  events/               # 1 événement = 1 fichier JSON
-schemas/                # règles de validation
-examples/               # modèles pour les contributeurs
-scripts/                # outils de contrôle
-docs/                   # documentation pédagogique et technique
+  events/               # 1 event = 1 JSON file
+schemas/                # validation rules
+examples/               # templates for contributors
+scripts/                # validation and control tools
+docs/                   # educational and technical documentation
 .github/
-  ISSUE_TEMPLATE/       # formulaire GitHub de contribution
-  workflows/            # validation automatique
+  ISSUE_TEMPLATE/       # GitHub contribution form
+  workflows/            # automated validation
 ```
 
-### Pourquoi un fichier par événement ?
+**### Why one file per event?**
 
-Pour éviter qu'une contribution touche un gros fichier partagé :
+To prevent a contribution from modifying a large shared file:
 
 ```text
-data/events/1066-bataille-de-hastings.json
+data/events/1066-battle-of-hastings.json
 ```
 
-Une personne peut travailler sur Hastings pendant qu'une autre ajoute Kiev, sans modifier le même fichier.
+One person can work on Hastings while another adds Kyiv, without modifying the same file.
 
-Le navigateur charge la liste depuis `data/events/manifest.json`.
+The browser loads the list from `data/events/manifest.json`.
 
-## Tester localement
+**## Test locally**
 
-Depuis la racine :
+From the project root:
 
 ```bash
 python -m http.server 8000
 ```
 
-Puis ouvrir :
+Then open:
 
 ```text
 http://localhost:8000/
 ```
 
-Ne pas ouvrir `index.html` directement en `file://`, car l'application charge les JSON avec `fetch()`.
+Do not open `index.html` directly via `file://`, because the application loads the JSON files using `fetch()`.
 
-## Valider les données
+**## Validate the data**
 
-Installer la dépendance :
+Install the dependency:
 
 ```bash
 python -m pip install jsonschema
 ```
 
-Puis :
+Then run:
 
 ```bash
 python scripts/validate_data.py
 ```
 
-La même validation est exécutée automatiquement lors des Pull Requests GitHub.
+The same validation is automatically run on GitHub Pull Requests.
 
-## Ajouter un événement
+**## Add an event**
 
-Le moyen recommandé pour les enseignants est le formulaire GitHub :
+The recommended method for teachers is the GitHub form:
 
-**Issues → Ajouter un événement historique**
+**Issues → Add a historical event**
 
-Le code de l'application n'a pas besoin d'être modifié.
+The application code does not need to be modified.
 
-Pour une contribution Git directe, copier `examples/event.example.json`, le renommer avec un identifiant unique et placer le fichier dans `data/events/`, puis lancer la validation.
+For a direct Git contribution, copy `examples/event.example.json`, rename it using a unique identifier, and place the file in `data/events/`. Then run the validation.
 
-## Licence / sources
+**## License / sources**
 
-À compléter selon les choix éditoriaux du projet.
+To be completed according to the project's editorial choices.
 
-## Flux de contribution automatique
+**## Automated contribution workflow**
 
-Un contributeur peut proposer un événement via **Issues → Ajouter un événement historique**.
-Une GitHub Action transforme automatiquement le formulaire en fichier JSON, lance la validation et ouvre une Pull Request.
+A contributor can propose an event via **Issues → Add a historical event**.
 
-Voir `docs/WORKFLOW_GITHUB.md`.
+A GitHub Action automatically converts the form into a JSON file, runs the validation, and opens a Pull Request.
+
+See `docs/WORKFLOW_GITHUB.md`.

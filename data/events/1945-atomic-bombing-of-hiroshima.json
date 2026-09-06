@@ -1,0 +1,13 @@
+{
+  "year": 1945,
+  "title": "Atomic bombing of Hiroshima",
+  "lon": 132.45,
+  "lat": 34.4,
+  "regionId": "empire-of-japan",
+  "religion": "Shinto",
+  "territory": "Empire of Japan",
+  "language": "Japanese",
+  "ethnicity": "Yamato",
+  "desc": "The United States drops an atomic bomb on Hiroshima, hastening the end of the Second World War.",
+  "id": "1945-atomic-bombing-of-hiroshima"
+}

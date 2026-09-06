@@ -1,0 +1,13 @@
+{
+  "year": 1054,
+  "title": "East–West Schism",
+  "lon": 12.5,
+  "lat": 41.9,
+  "regionId": "byzantine-empire",
+  "religion": "Orthodox Christianity",
+  "territory": "Byzantine Empire",
+  "language": "Greek",
+  "ethnicity": "Greeks",
+  "desc": "Mutual excommunications between Rome and Constantinople formalize the split between Catholic and Orthodox Christianity.",
+  "id": "1054-eastwest-schism"
+}

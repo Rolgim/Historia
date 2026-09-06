@@ -1,0 +1,13 @@
+{
+  "year": 220,
+  "title": "Fall of the Han Empire",
+  "lon": 108.9,
+  "lat": 34.3,
+  "regionId": "han-empire",
+  "religion": "Chinese folk religion",
+  "territory": "Han Empire",
+  "language": "Old Chinese",
+  "ethnicity": "Han",
+  "desc": "The Han Empire fractures into the Three Kingdoms, ending four centuries of largely unified Chinese rule.",
+  "id": "220-fall-of-the-han-empire"
+}

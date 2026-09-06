@@ -1,0 +1,13 @@
+{
+  "year": 1258,
+  "title": "Sack of Baghdad",
+  "lon": 44.4,
+  "lat": 33.3,
+  "regionId": "abbasid-caliphate",
+  "religion": "Sunni Islam",
+  "territory": "Abbasid Caliphate",
+  "language": "Arabic",
+  "ethnicity": "Arabs",
+  "desc": "The Mongols under Hulagu Khan destroy Baghdad, ending the Abbasid Caliphate's political power.",
+  "id": "1258-sack-of-baghdad"
+}

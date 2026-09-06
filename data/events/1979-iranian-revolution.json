@@ -1,0 +1,13 @@
+{
+  "year": 1979,
+  "title": "Iranian Revolution",
+  "lon": 51.42,
+  "lat": 35.7,
+  "regionId": "iran",
+  "religion": "Shia Islam",
+  "territory": "Iran",
+  "language": "Persian",
+  "ethnicity": "Persians",
+  "desc": "Mass protests topple the Shah of Iran, and Ayatollah Khomeini establishes an Islamic Republic.",
+  "id": "1979-iranian-revolution"
+}

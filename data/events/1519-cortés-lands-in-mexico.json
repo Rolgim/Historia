@@ -1,0 +1,13 @@
+{
+  "year": 1519,
+  "title": "Cortés lands in Mexico",
+  "lon": -96.13,
+  "lat": 19.2,
+  "regionId": "aztec-empire",
+  "religion": "Aztec religion",
+  "territory": "Aztec Empire",
+  "language": "Nahuatl",
+  "ethnicity": "Nahua",
+  "desc": "Hernán Cortés lands on the Gulf coast of Mexico, beginning the Spanish campaign against the Aztec Empire.",
+  "id": "1519-cortés-lands-in-mexico"
+}

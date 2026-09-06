@@ -1,0 +1,13 @@
+{
+  "year": 1871,
+  "title": "Unification of Germany",
+  "lon": 13.4,
+  "lat": 52.52,
+  "regionId": "german-empire",
+  "religion": "Protestant Christianity",
+  "territory": "German Empire",
+  "language": "German",
+  "ethnicity": "Germans",
+  "desc": "King Wilhelm I of Prussia is proclaimed German Emperor at Versailles, unifying Germany under Prussian leadership.",
+  "id": "1871-unification-of-germany"
+}

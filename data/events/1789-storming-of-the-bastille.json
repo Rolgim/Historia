@@ -1,0 +1,13 @@
+{
+  "year": 1789,
+  "title": "Storming of the Bastille",
+  "lon": 2.37,
+  "lat": 48.85,
+  "regionId": "kingdom-of-france",
+  "religion": "Catholic Christianity",
+  "territory": "Kingdom of France",
+  "language": "French",
+  "ethnicity": "French",
+  "desc": "Parisians storm the Bastille fortress, a defining moment of the outbreak of the French Revolution.",
+  "id": "1789-storming-of-the-bastille"
+}
