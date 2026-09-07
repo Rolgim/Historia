@@ -2,7 +2,12 @@
   <h1>Historia</h1>
   <img src="img/historia-512.png" alt="Historia logo" width="120"/>
   <p>Interactive historical map of the world.</p>
+  <h2>Screenshots</h2>
 </div>
+
+<img width="1855" height="962" alt="image" src="https://github.com/user-attachments/assets/decb26ad-1ead-4bf7-99dd-de7c4d9ee067" />
+<img width="1855" height="962" alt="image" src="https://github.com/user-attachments/assets/b39917c8-7cfe-44c8-9b5c-288e611d9504" />
+
 
 
 ## Architecture
