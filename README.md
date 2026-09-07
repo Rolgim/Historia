@@ -107,8 +107,13 @@ it `YEAR-slug.json`, fill in the year (between -2000 and 2000), coordinates,
 `data/events/manifest.json`, then run the validation.
 
 ## License / sources
-
-To be completed according to the project's editorial choices.
+ 
+Code is licensed under the [Apache License 2.0](LICENSE).
+ 
+Map data comes from [Aourednik's historical-basemaps](https://github.com/aourednik/historical-basemaps)
+and [Wikidata](https://www.wikidata.org/), each under their own respective
+licenses — check those projects for details before reusing the historical
+map data itself outside of this project.
 
 ## Automated contribution workflow
 
