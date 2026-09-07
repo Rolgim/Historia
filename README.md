@@ -1,9 +1,9 @@
 <div align="center">
   <h1>Historia</h1>
   <img src="img/historia-512.png" alt="Historia logo" width="120"/>
+  <p>Interactive historical map of the world.</p>
 </div>
 
-Interactive historical map of the world.
 
 ## Architecture
 
