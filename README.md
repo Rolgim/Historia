@@ -1,4 +1,4 @@
-<img src="img/historia-512.png" alt="Historia logo" width="120" />
+<img src="img/historia-historia-512.png" alt="Historia logo" width="120" />
 
 # Historia
 
