@@ -1,24 +1,32 @@
-**# Histories**
+<img src="img/historia-512.png" alt="Historia logo" width="120" />
+
+# Historia
 
 Interactive historical map of the world.
 
-**## Architecture**
+## Architecture
 
 ```text
 index.html
 src/                    # application code
 data/
+  historical-enrichment.json   # political-entity data (religion, language, ethnicity, etc.)
   events/               # 1 event = 1 JSON file
-schemas/                # validation rules
+    manifest.json       # list of event files loaded by the browser
+schemas/
+  event.schema.json     # validation rules for events
 examples/               # templates for contributors
-scripts/                # validation and control tools
+scripts/
+  validate_data.py      # checks schema + manifest + entity consistency
+  issue_to_event.py      # turns a GitHub issue form into an event file
+  list_entities.py      # search valid political-entity names
 docs/                   # educational and technical documentation
 .github/
   ISSUE_TEMPLATE/       # GitHub contribution form
   workflows/            # automated validation
 ```
 
-**### Why one file per event?**
+### Why one file per event?
 
 To prevent a contribution from modifying a large shared file:
 
@@ -28,9 +36,26 @@ data/events/1066-battle-of-hastings.json
 
 One person can work on Hastings while another adds Kyiv, without modifying the same file.
 
-The browser loads the list from `data/events/manifest.json`.
+The browser loads the list from `data/events/manifest.json` — if you add or rename a file directly with Git, remember to update this list too, or the new event won't appear on the map.
 
-**## Test locally**
+### Where do political entities come from?
+
+There is no `data/regions.json` in this project. Every event's `territory`
+field must exactly match an entity name in `data/historical-enrichment.json`
+— a set of political entities (kingdoms, empires, peoples) derived from
+Aourednik's historical-basemaps GeoJSON (the map polygons rendered on the
+timeline) and enriched with Wikidata data on religion, language, and
+ethnicity.
+
+This match matters for more than validation: it's how the map colors an
+event marker the same as the country polygon beneath it. Find the correct
+spelling for an entity with:
+
+```bash
+python scripts/list_entities.py "france"
+```
+
+## Test locally
 
 From the project root:
 
@@ -46,7 +71,7 @@ http://localhost:8000/
 
 Do not open `index.html` directly via `file://`, because the application loads the JSON files using `fetch()`.
 
-**## Validate the data**
+## Validate the data
 
 Install the dependency:
 
@@ -60,9 +85,14 @@ Then run:
 python scripts/validate_data.py
 ```
 
+This checks that every event matches `schemas/event.schema.json`, that
+`data/events/manifest.json` matches the files actually on disk, that there
+are no duplicate event ids, and that every `territory` matches a real
+entity in `data/historical-enrichment.json`.
+
 The same validation is automatically run on GitHub Pull Requests.
 
-**## Add an event**
+## Add an event
 
 The recommended method for teachers is the GitHub form:
 
@@ -70,16 +100,21 @@ The recommended method for teachers is the GitHub form:
 
 The application code does not need to be modified.
 
-For a direct Git contribution, copy `examples/event.example.json`, rename it using a unique identifier, and place the file in `data/events/`. Then run the validation.
+For a direct Git contribution, copy `examples/event.example.json`, rename
+it `YEAR-slug.json`, fill in the year (between -2000 and 2000), coordinates,
+`religion`/`territory`/`language`/`ethnicity`/`desc`, add it to
+`data/events/manifest.json`, then run the validation.
 
-**## License / sources**
+## License / sources
 
 To be completed according to the project's editorial choices.
 
-**## Automated contribution workflow**
+## Automated contribution workflow
 
 A contributor can propose an event via **Issues → Add a historical event**.
 
-A GitHub Action automatically converts the form into a JSON file, runs the validation, and opens a Pull Request.
+A GitHub Action automatically converts the form into a JSON file, updates
+`data/events/manifest.json`, runs the validation (including the entity
+check above), and opens a Pull Request.
 
 See `docs/WORKFLOW_GITHUB.md`.
