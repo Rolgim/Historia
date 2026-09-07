@@ -1,0 +1,120 @@
+name: "Add a historical event"
+description: "Propose an event for the Historia map"
+title: "[Event] "
+labels:
+  - "contribution"
+  - "event"
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you! This form is for proposing a new historical event.
+        After validation, this will automatically become a Pull Request.
+        You don't need to touch any code.
+
+  - type: input
+    id: year
+    attributes:
+      label: "Year"
+      description: "Year of the event, between -2000 and 2000 (use a negative number for BCE, e.g. -500 for 500 BCE)."
+      placeholder: "1066"
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: "Title"
+      description: "Short title shown on the map."
+      placeholder: "Battle of Hastings"
+    validations:
+      required: true
+
+  - type: input
+    id: longitude
+    attributes:
+      label: "Longitude"
+      description: "Longitude in decimal degrees."
+      placeholder: "0.49"
+    validations:
+      required: true
+
+  - type: input
+    id: latitude
+    attributes:
+      label: "Latitude"
+      description: "Latitude in decimal degrees."
+      placeholder: "50.91"
+    validations:
+      required: true
+
+  - type: input
+    id: region_id
+    attributes:
+      label: "Region ID"
+      description: "A short slug for this event's own bookkeeping (not checked against a file — just keep it lowercase and hyphenated)."
+      placeholder: "british-isles"
+    validations:
+      required: true
+
+  - type: input
+    id: territory
+    attributes:
+      label: "Territory"
+      description: >
+        The political entity this event belongs to. This MUST exactly match
+        an entity name in data/historical-enrichment.json, or the event
+        marker on the map won't be colored the same as its country. Search
+        for the exact spelling with: python scripts/list_entities.py "<keyword>"
+      placeholder: "Kingdom of France"
+    validations:
+      required: true
+
+  - type: input
+    id: religion
+    attributes:
+      label: "Religion"
+      description: "Dominant religion at the time and place of the event."
+      placeholder: "Catholic Christianity"
+    validations:
+      required: true
+
+  - type: input
+    id: language
+    attributes:
+      label: "Language"
+      description: "Dominant language at the time and place of the event."
+      placeholder: "Old French"
+    validations:
+      required: true
+
+  - type: input
+    id: ethnicity
+    attributes:
+      label: "Ethnicity"
+      description: "Dominant ethnic group at the time and place of the event."
+      placeholder: "Franks"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "Short historical summary (at least 10 characters), suitable for students."
+      placeholder: "Briefly describe the event and why it matters."
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: "Sources"
+      description: >
+        Optional, but strongly encouraged. One source per line, each
+        containing a link — lines without a URL are ignored.
+      placeholder: |
+        Author, Title, publisher, year — https://...
+    validations:
+      required: false
