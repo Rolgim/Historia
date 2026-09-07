@@ -18,12 +18,13 @@
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^[a-z0-9-]+$"
+      "pattern": "^-?[a-z0-9-]+$"
     },
     "year": {
       "type": "integer",
-      "minimum": 700,
-      "maximum": 1400
+      "minimum": -2000,
+      "maximum": 2000,
+      "$comment": "Must match the timeline slider range in index.html (#year-slider min/max)."
     },
     "title": {
       "type": "string",
@@ -40,13 +41,15 @@
       "maximum": 90
     },
     "regionId": {
-      "type": "string"
+      "type": "string",
+      "$comment": "A free-form slug for this event's own bookkeeping. It is NOT checked against any regions.json — this project has no such file. Political-entity linking on the map is done via the 'territory' field below."
     },
     "religion": {
       "type": "string"
     },
     "territory": {
-      "type": "string"
+      "type": "string",
+      "$comment": "Must exactly match an entity name (a key) in data/historical-enrichment.json's \"names\" object — which is itself derived from Aourednik's historical-basemaps GeoJSON (SUBJECTO/NAME properties), enriched with Wikidata. scripts/validate_data.py enforces this. A mismatch means the event marker on the map will not be colored the same as the country polygon underneath it."
     },
     "language": {
       "type": "string"
