@@ -1,0 +1,13 @@
+{
+  "year": 1492,
+  "title": "Columbus reaches the Americas",
+  "lon": -74.5,
+  "lat": 22.0,
+  "regionId": "spain",
+  "religion": "Catholic Christianity",
+  "territory": "Spain",
+  "language": "Spanish",
+  "ethnicity": "Spaniards",
+  "desc": "Christopher Columbus's expedition reaches the Caribbean, beginning sustained European contact with the Americas.",
+  "id": "1492-columbus-reaches-the-americas"
+}
