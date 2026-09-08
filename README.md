@@ -111,6 +111,8 @@ it `YEAR-slug.json`, fill in the year (between -2000 and 2000), coordinates,
 `religion`/`territory`/`language`/`ethnicity`/`desc`, add it to
 `data/events/manifest.json`, then run the validation.
 
+<img width="1855" height="962" alt="image" src="https://github.com/user-attachments/assets/a80d8006-2c23-40fe-b04e-a8fba4d92cd3" />
+
 ## License / sources
  
 Code is licensed under the [Apache License 2.0](LICENSE).
